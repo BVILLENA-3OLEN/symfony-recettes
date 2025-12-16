@@ -9,6 +9,7 @@
                 <tr>
                     <th>Recette</th>
                     <th>Ingrédients</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,6 +28,13 @@
                                     </li>
                                 {% endfor %}
                             </ul>
+                        </td>
+                        <td>
+                            <a href="{{ path('app_recettes_details_get', {
+                                id: recette.id,
+                            }) }}">
+                                Détails
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}

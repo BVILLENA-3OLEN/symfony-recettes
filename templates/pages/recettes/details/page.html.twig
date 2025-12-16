@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>{{ recette.nom }}</h1>
+
+    <nav>
+        <a href="{{ path('app_recettes_liste_get') }}">Retour à la liste</a>
+    </nav>
+
+    <main>
+        {{ recette.niveau.value }}
+
+        <ul>
+            {% for ingredient_recette in recette.ingredientRecettes %}
+                <li>{{ ingredient_recette.ingredient.nom }}</li>
+            {% endfor %}
+        </ul>
+
+        <ol>
+            {% for etape in recette.etapes %}
+                <li>{{ etape.description }}</li>
+            {% endfor %}
+        </ol>
+    </main>
+
+    <hr>
+
+    {{ dump(recette) }}
+{% endblock body %}

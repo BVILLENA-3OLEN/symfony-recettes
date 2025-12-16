@@ -35,4 +35,24 @@ class RecetteRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function getForDetails(Recette $recette): Recette
+    {
+        return $this
+            ->createQueryBuilder('r')
+            ->leftJoin(join: 'r.ingredientRecettes', alias: 'i_r')
+            ->addSelect('i_r')
+            ->leftJoin(join: 'i_r.ingredient', alias: 'i')
+            ->addSelect('i')
+            ->leftJoin(join: 'i_r.typeQuantite', alias: 'qt_t')
+            ->addSelect('qt_t')
+            ->leftJoin(join: 'r.etapes', alias: 'e')
+            ->addSelect('e')
+            ->leftJoin(join: 'r.categories', alias: 'cat')
+            ->addSelect('cat')
+            ->where('r = :recette')
+            ->setParameter('recette', $recette)
+            ->getQuery()
+            ->getSingleResult();
+    }
 }
