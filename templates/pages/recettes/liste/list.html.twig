@@ -39,6 +39,12 @@
                             }) }}">
                                 Détails
                             </a>
+
+                            <a href="{{ path('app_recettes_edition_get', {
+                                id: recette.id,
+                            }) }}">
+                                Modifier
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}

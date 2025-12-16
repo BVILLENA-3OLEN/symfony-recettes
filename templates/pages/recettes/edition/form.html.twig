@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Modification de recette</h1>
+
+    <nav>
+        <a href="{{ path('app_recettes_liste_get') }}">Retour à la liste</a>
+    </nav>
+
+    <main>
+        {{ form(form) }}
+    </main>
+{% endblock body %}
+
