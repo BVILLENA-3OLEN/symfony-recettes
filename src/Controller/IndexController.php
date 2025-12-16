@@ -5,21 +5,14 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route(path: '/hello/{name}', name: 'app_index_get')]
+#[Route(path: '/', name: 'app_index_get')]
 class IndexController extends AbstractController
 {
-    public function __invoke(Request $request, string $name = 'there')
+    public function __invoke(): Response
     {
-        dump($request->query->get('module'));
-
-        return $this->render(
-            view: 'index.html.twig',
-            parameters: [
-                'nom_utilisateur' => $name,
-            ]
-        );
+        return $this->render(view: 'pages/index.html.twig');
     }
 }
