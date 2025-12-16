@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Recettes;
+namespace App\Controller\Recettes\Liste;
 
 use App\Repository\RecetteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

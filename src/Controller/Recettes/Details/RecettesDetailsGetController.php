@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Recettes;
+namespace App\Controller\Recettes\Details;
 
 use App\Entity\Recette;
 use App\Repository\RecetteRepository;
