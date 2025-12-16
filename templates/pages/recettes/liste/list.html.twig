@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Liste des recettes</h1>
+    <main>
+        <section>
+            <table>
+                <thead>
+                <tr>
+                    <th>Recette</th>
+                    <th>Ingrédients</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for recette in recettes %}
+                    <tr>
+                        <td>{{ recette.nom }}</td>
+                        <td>
+                            <ul>
+                                {% for ingredient_recette in recette.ingredientRecettes %}
+                                    <li>
+                                        <strong>{{ ingredient_recette.ingredient.nom }}</strong>
+                                        : {{ ingredient_recette.quantite }}
+                                        {% if ingredient_recette.typeQuantite is not null %}
+                                            {{ ingredient_recette.typeQuantite.libelle }}
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+{% endblock body %}
