@@ -28,7 +28,7 @@ class Recette
     #[ORM\Column]
     private ?int $tempsPreparation = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $tempsCuisson = null;
 
     #[ORM\Column(nullable: true)]
