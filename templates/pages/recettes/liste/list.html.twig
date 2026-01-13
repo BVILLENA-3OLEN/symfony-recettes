@@ -1,55 +1,62 @@
 {% extends "base.html.twig" %}
 
-{% block body %}
-    <h1>Liste des recettes</h1>
-    <main>
-        <nav>
-            <a href="{{ path('app_recettes_creation_get') }}">Créer une recette</a>
-        </nav>
+{% block page_navigation %}
+    <li class="nav-item">
+        <a class="btn btn-outline-primary" href="{{ path('app_recettes_creation_get') }}">Créer une recette</a>
+    </li>
+{% endblock page_navigation %}
 
-        <section>
-            <table>
-                <thead>
+{% block page_title %}Liste des recettes{% endblock page_title %}
+
+{% block body %}
+    <section>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Recette</th>
+                <th>Ingrédients</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for recette in recettes %}
                 <tr>
-                    <th>Recette</th>
-                    <th>Ingrédients</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for recette in recettes %}
-                    <tr>
-                        <td>{{ recette.nom }}</td>
-                        <td>
-                            <ul>
-                                {% for ingredient_recette in recette.ingredientRecettes %}
-                                    <li>
-                                        <strong>{{ ingredient_recette.ingredient.nom }}</strong>
-                                        : {{ ingredient_recette.quantite }}
-                                        {% if ingredient_recette.typeQuantite is not null %}
-                                            {{ ingredient_recette.typeQuantite.libelle }}
-                                        {% endif %}
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </td>
-                        <td>
+                    <td>{{ recette.nom }}</td>
+                    <td>
+                        <ul>
+                            {% for ingredient_recette in recette.ingredientRecettes %}
+                                <li>
+                                    <strong>{{ ingredient_recette.ingredient.nom }}</strong>
+                                    : {{ ingredient_recette.quantite }}
+                                    {% if ingredient_recette.typeQuantite is not null %}
+                                        {{ ingredient_recette.typeQuantite.libelle }}
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <div class="flex gap-2">
                             <a href="{{ path('app_recettes_details_get', {
                                 id: recette.id,
-                            }) }}">
+                            }) }}"
+                                class="btn btn-outline-info"
+                            >
                                 Détails
                             </a>
 
                             <a href="{{ path('app_recettes_edition_get', {
                                 id: recette.id,
-                            }) }}">
+                            }) }}"
+                                class="btn btn-outline-primary"
+                            >
                                 Modifier
                             </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </section>
-    </main>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
 {% endblock body %}

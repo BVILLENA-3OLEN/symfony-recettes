@@ -1,27 +1,27 @@
 {% extends "base.html.twig" %}
 
+{% block page_navigation %}
+    <li class="nav-item">
+        <a class="btn btn-outline-secondary" href="{{ path('app_recettes_liste_get') }}">Retour à la liste</a>
+    </li>
+{% endblock page_navigation %}
+
+{% block page_title %}{{ recette.nom }}{% endblock page_title %}
+
 {% block body %}
-    <h1>{{ recette.nom }}</h1>
+    {{ recette.niveau.value ?? '' }}
 
-    <nav>
-        <a href="{{ path('app_recettes_liste_get') }}">Retour à la liste</a>
-    </nav>
+    <ul>
+        {% for ingredient_recette in recette.ingredientRecettes %}
+            <li>{{ ingredient_recette.ingredient.nom }}</li>
+        {% endfor %}
+    </ul>
 
-    <main>
-        {{ recette.niveau.value }}
-
-        <ul>
-            {% for ingredient_recette in recette.ingredientRecettes %}
-                <li>{{ ingredient_recette.ingredient.nom }}</li>
-            {% endfor %}
-        </ul>
-
-        <ol>
-            {% for etape in recette.etapes %}
-                <li>{{ etape.description }}</li>
-            {% endfor %}
-        </ol>
-    </main>
+    <ol>
+        {% for etape in recette.etapes %}
+            <li>{{ etape.description }}</li>
+        {% endfor %}
+    </ol>
 
     <hr>
 

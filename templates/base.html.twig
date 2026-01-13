@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>Recettes 3CDWFS 2026</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+    {% block stylesheets %}
+    {% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body>
+    <nav class="navbar sticky-top mb-1 border-2 border-bottom border-secondary bg-body-tertiary">
+        <div class="container-fluid justify-content-start">
+            <a href="{{ path('app_index_get') }}" class="navbar-brand text-center fs-6">
+                Recettes<br>
+                3CDWFS
+            </a>
+
+            {% if block('page_navigation') is defined %}
+                <ul class="navbar-nav ms-4 ps-4 border-1 border-start border-secondary">
+                    {{ block('page_navigation') }}
+                </ul>
+            {% endif %}
+        </div>
+    </nav>
+
+    {% if block('page_title') is defined %}
+        <h1 class="mx-2">{{ block('page_title') }}</h1>
+    {% endif %}
+
+    <main class="container-fluid">
+        {{ block('body') }}
+    </main>
+</body>
 </html>

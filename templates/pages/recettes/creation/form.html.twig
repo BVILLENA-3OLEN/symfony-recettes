@@ -1,14 +1,13 @@
 {% extends "base.html.twig" %}
 
+{% block page_navigation %}
+    <li class="nav-item">
+        <a class="btn btn-outline-secondary" href="{{ path('app_recettes_liste_get') }}">Retour à la liste</a>
+    </li>
+{% endblock page_navigation %}
+
+{% block page_title %}Création de recette{% endblock page_title %}
+
 {% block body %}
-    <h1>Création de recette</h1>
-
-    <nav>
-        <a href="{{ path('app_recettes_liste_get') }}">Retour à la liste</a>
-    </nav>
-
-    <main>
-        {{ form(form) }}
-    </main>
+    {{ form(form) }}
 {% endblock body %}
-
