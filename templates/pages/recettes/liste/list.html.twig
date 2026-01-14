@@ -2,7 +2,9 @@
 
 {% block page_navigation %}
     <li class="nav-item">
-        <a class="btn btn-outline-primary" href="{{ path('app_recettes_creation_get') }}">Créer une recette</a>
+        <a class="btn btn-outline-primary" href="{{ path('app_recettes_creation_get') }}">
+            {{ ux_icon('flowbite:circle-plus-outline') }} Créer une recette
+        </a>
     </li>
 {% endblock page_navigation %}
 
@@ -42,7 +44,7 @@
                             }) }}"
                                 class="btn btn-outline-info"
                             >
-                                Détails
+                                {{ ux_icon('flowbite:eye-outline') }} Détails
                             </a>
 
                             <a href="{{ path('app_recettes_edition_get', {
@@ -50,7 +52,7 @@
                             }) }}"
                                 class="btn btn-outline-primary"
                             >
-                                Modifier
+                                {{ ux_icon('flowbite:pen-outline') }} Modifier
                             </a>
                         </div>
                     </td>

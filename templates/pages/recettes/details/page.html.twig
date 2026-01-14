@@ -2,7 +2,9 @@
 
 {% block page_navigation %}
     <li class="nav-item">
-        <a class="btn btn-outline-secondary" href="{{ path('app_recettes_liste_get') }}">Retour à la liste</a>
+        <a class="btn btn-outline-secondary" href="{{ path('app_recettes_liste_get') }}">
+            {{ ux_icon('flowbite:arrow-left-outline') }} Retour à la liste
+        </a>
     </li>
 {% endblock page_navigation %}
 
