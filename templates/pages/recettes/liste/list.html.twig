@@ -2,9 +2,11 @@
 
 {% block page_navigation %}
     <li class="nav-item">
-        <a class="btn btn-outline-primary" href="{{ path('app_recettes_creation_get') }}">
-            {{ ux_icon('flowbite:circle-plus-outline') }} Créer une recette
-        </a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="btn btn-outline-primary" href="{{ path('app_recettes_creation_get') }}">
+                {{ ux_icon('flowbite:circle-plus-outline') }} Créer une recette
+            </a>
+        {% endif %}
     </li>
 {% endblock page_navigation %}
 
@@ -47,13 +49,15 @@
                                 {{ ux_icon('flowbite:eye-outline') }} Détails
                             </a>
 
-                            <a href="{{ path('app_recettes_edition_get', {
-                                id: recette.id,
-                            }) }}"
-                                class="btn btn-outline-primary"
-                            >
-                                {{ ux_icon('flowbite:pen-outline') }} Modifier
-                            </a>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('app_recettes_edition_get', {
+                                    id: recette.id,
+                                }) }}"
+                                    class="btn btn-outline-primary"
+                                >
+                                    {{ ux_icon('flowbite:pen-outline') }} Modifier
+                                </a>
+                            {% endif %}
                         </div>
                     </td>
                 </tr>

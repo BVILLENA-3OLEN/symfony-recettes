@@ -11,12 +11,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route(
     path: '/recettes/création',
     name: 'app_recettes_creation_post',
     methods: [Request::METHOD_POST]
 )]
+#[IsGranted('ROLE_ADMIN')]
 class RecettesCreationPostController extends AbstractController
 {
     public function __construct(

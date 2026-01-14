@@ -10,12 +10,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route(
     path: '/recettes/{id}/édition',
     name: 'app_recettes_edition_get',
     methods: [Request::METHOD_GET],
 )]
+#[IsGranted('ROLE_ADMIN')]
 class RecettesEditionGetController extends AbstractController
 {
     public function __invoke(Recette $recette): Response
