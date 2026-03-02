@@ -1,0 +1,25 @@
+<div {{ stimulus_controller('greet', {
+    'default': name,
+}) }}>
+    <input
+        class="form-input"
+        type="text"
+        {{ stimulus_target('greet', 'input') }}
+        value="{{ name }}"
+    >
+    <button
+        class="btn btn-primary"
+        type="button"
+        {{ stimulus_action('greet', 'salut') }}
+    >
+        Salut !
+    </button>
+    <button
+        class="btn btn-danger"
+        type="button"
+        {{ stimulus_action('greet', 'reset') }}
+    >
+        {{ ux_icon('bi:x-lg') }}
+    </button>
+    <span {{ stimulus_target('greet', 'result') }}></span>
+</div>
