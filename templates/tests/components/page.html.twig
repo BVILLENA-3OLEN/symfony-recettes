@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section>
+        <header>
+            <h2>Exemple avec Stimulus</h2>
+        </header>
+
+        <div {{ stimulus_controller('greet', {
+            'default': 'Billy',
+        }) }}>
+            <input
+                class="form-input"
+                type="text"
+                {{ stimulus_target('greet', 'input') }}
+            >
+            <button
+                class="btn btn-primary"
+                type="button"
+                {{ stimulus_action('greet', 'salut') }}
+            >
+                Salut !
+            </button>
+            <button
+                class="btn btn-danger"
+                type="button"
+                {{ stimulus_action('greet', 'reset') }}
+            >
+                {{ ux_icon('bi:x-lg') }}
+            </button>
+            <span {{ stimulus_target('greet', 'result') }}></span>
+        </div>
+    </section>
+{% endblock body %}
