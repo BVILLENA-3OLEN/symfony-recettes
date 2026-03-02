@@ -1,0 +1,36 @@
+<div {{ attributes }}>
+    {% if _errors.has('nom') %}
+        <div class="alert alert-danger">
+            {{ _errors.get('nom') }}
+        </div>
+    {% endif %}
+
+    <div class="d-flex gap-1 align-items-center">
+        <input
+            type="text"
+            data-model="norender|nom"
+        >
+        <button
+            class="btn btn-primary"
+            type="button"
+            {{ live_action('bonjour') }}
+        >
+            Bonjour !
+        </button>
+        <button
+            class="btn btn-danger"
+            type="button"
+            {{ live_action('reset') }}
+        >
+            {{ ux_icon('bi:x-lg') }}
+        </button>
+        {% if
+            nom is not empty
+            and _errors.has('nom') == false
+        %}
+            <span>
+                Bonjour {{ nom }} !
+            </span>
+        {% endif %}
+    </div>
+</div>
